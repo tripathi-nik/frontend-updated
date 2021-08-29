@@ -1,0 +1,10 @@
+.formGroup { padding: 10px 5px 10px 5px;}
+.formElement { width: 92%; height: 30px; border: 1px solid silver; padding-left: 18px;}
+.formLabel { margin-top: 10px;position: absolute;margin-left: 10px;font-family: serif;color: #0d5759;font-weight: 500;transition: 0.5s}
+.submitBtn {height: 30px;width: 96%;background-color: blue;border: 2px solid brown;font-size: 15px;color: white;font-weight: 700;}
+input[error=true]{border: 1px solid red;}
+label[error=true]{color:red}
+.errorMessage{color: red;font-size: 13px;}
+.loadImage{width:150px}
+.loaderContainer{width:100%;text-align: center;margin-top: -160px;z-index: 500}
+.error{color:red}
