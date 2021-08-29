@@ -14,6 +14,7 @@ const CONFIG = {
   },
   LISTURL:'https://jsonplaceholder.typicode.com/todos/',
   UNSECUREDSEGMENTS:['REGISTER','LOGIN'],
+  SECUREDSEGMENTS:['PROFILE'],
 };
 
 export default CONFIG;
