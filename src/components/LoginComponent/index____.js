@@ -11,9 +11,7 @@ const LoginComponent = props =>{
   });
   return(
    <Formik initialValues={{email_address:'',input_password:''}} onSubmit={(values, {setSubmitting})=>{
-        // dispatch({type:'add_loader',payload:'load'});
-        // dispatch(loginAction(values));
-        console.log(values);
+
       }}
       validationSchema = {Yup.object().shape({
         email_address:Yup.string().email(MESSAGES.EMAIL_ERROR).required(MESSAGES.EMAIL_ERROR),

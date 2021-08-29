@@ -1,4 +1,4 @@
-import {loginPerformer} from '../actionTypes';
+import {loginPerformer,userRegister} from '../actionTypes';
 const data = {
   validate:localStorage.getItem('token')?true:false,
 };
@@ -15,6 +15,10 @@ const agentReducer = (state=data,action) =>{
         localStorage.removeItem('token');
         const userData = {...action.payload,...{validate:false}};
         return userData;
+      }
+      case userRegister.register:{
+        const data = {...action.payload};
+        return data;
       }
       default:
       return state

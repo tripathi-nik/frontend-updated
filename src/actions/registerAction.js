@@ -14,9 +14,8 @@ const registerAction = {
     return fetch(CONFIG[env]['SERVERURL']+'api/agent/add',requestOptions)
       .then(res=>res.json())
       .then(res2=>{
-        console.log(res2);
         dispatch(loaderAction.stop());
-        //dispatch({type:loginPerformer.login,payload:res2});
+        dispatch({type:userRegister.register,payload:res2});
       })
       .catch(error => {
         console.error('Error:', error);

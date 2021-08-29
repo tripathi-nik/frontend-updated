@@ -6,7 +6,8 @@ const Messages = {
   WRONG_CREDENTIAL:400,
   REPEAT_PASSWORD_ERROR:'Repeat password should be same as password.',
   input_password:'Please enter a correct password.',
-  email_address:'User doesnot exists by the given email address.'
+  email_address:'User doesnot exists by the given email address.',
+  email_exists:'Email address is already in use. Please use different email address.'
 };
 
 export default Messages;
