@@ -15,7 +15,7 @@ const RegisterComponent = () =>{
  const dispatch = useDispatch();
  const load = useSelector(state => state.loaderReducer);
  const log = useSelector(state => state.agentReducer);
-
+ console.log(log);
  return(
 
   <Formik initialValues={{first_name:'',last_name:'',email_address:'',input_password:'',repeat_password:''}} onSubmit={(values, {setSubmitting})=>{
@@ -46,7 +46,7 @@ const RegisterComponent = () =>{
   return(
 
     <form className={classes.form} onSubmit={handleSubmit}>
-      {log._id&&<Redirect exact to={PATHS.LOGIN} />}
+      
       {log.status_code&&log.status_code===MESSAGES.WRONG_CREDENTIAL&&<div className={classes.error}>{MESSAGES[log.error]}</div>}
       <div className={classes.formGroup}>
         <label ref={el => inputRef.current['nameLable'] = el} className={classes.formLabel} {...(errors.first_name&&touched.first_name)?{error:"true"}:{}}>First Name*</label>

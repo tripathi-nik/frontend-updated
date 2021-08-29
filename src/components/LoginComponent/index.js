@@ -12,6 +12,7 @@ const LoginComponent = () =>{
  const dispatch = useDispatch();
  const load = useSelector(state => state.loaderReducer);
  const log = useSelector(state => state.agentReducer);
+ 
  return(
   <Formik initialValues={{email_address:'',input_password:''}} onSubmit={(values, {setSubmitting})=>{
        dispatch(loginAction.login(values));
