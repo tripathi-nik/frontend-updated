@@ -1,5 +1,5 @@
 import {useState,useMemo} from 'react';
-//import CheckRedirection from '../../custom/CheckRedirection';
+import WebConfig from '../../custom/WebConfig';
 import PATH from '../../config/webPath';
 import CONFIG from '../../config/siteConfig';
 import classes from './menu.module.css';
@@ -18,7 +18,8 @@ const NavMenu = () =>{
   let history = useHistory();
   const dispatch = useDispatch();
   const userAgent = useSelector(state => state.agentReducer);
-
+  let conf = WebConfig();
+  console.log(conf);
   let { validate } = userAgent;
   const openNav = () =>{
     console.log("open nav function hit.");
@@ -63,7 +64,7 @@ const NavMenu = () =>{
                 return <Link className={classes.navLink} to={PATH[value]} key={index}>{value}</Link>
 
           })}
-          {token&&<button className={classes.logoutButton} onClick={doLogout}>Logout</button>}
+          {token&&<button className={classes.logoutButton} onClick={doLogout}><img src={CONFIG.LOGOUTICON}/></button>}
       </div>
       <span style={{fontSize:'22px',cursor:'pointer'}} onClick={()=>openNav()}>&#9776;</span>
       <Link to={PATH.HOME}>

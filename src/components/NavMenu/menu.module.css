@@ -4,4 +4,5 @@
 .sidenav a:focus{background-color: black;color:white;font-weight: 500}
 .sidenav a:hover { color: #f1f1f1;}
 .sidenav .closebtn {position: absolute;cursor:pointer;top: 0;right: 25px;font-size: 36px;margin-left: 50px;}
-.logoutButton{ margin-left: 30px;border: 1px;width: 60px;height: 25px;}
+.logoutButton{ margin-left: 25px;border: 1px;width: 60px;height: 25px;background: transparent;cursor:pointer;}
+.logoutButton img{height: 38px}
