@@ -5,6 +5,7 @@ const data = {
 const agentReducer = (state=data,action) =>{
    if(action.payload&&action.payload.token){
      localStorage.setItem('token', action.payload.token);
+     localStorage.setItem('usID', action.payload.data._id);
    }
    switch(action.type) {
       case loginPerformer.login:{
@@ -13,6 +14,7 @@ const agentReducer = (state=data,action) =>{
       }
       case loginPerformer.logout:{
         localStorage.removeItem('token');
+        localStorage.removeItem('usID');
         const userData = {...action.payload,...{validate:false}};
         return userData;
       }

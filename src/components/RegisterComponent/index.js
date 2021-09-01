@@ -2,14 +2,10 @@ import classes from './registerComponent.module.css';
 import { useSelector,useDispatch } from 'react-redux';
 import {useRef} from 'react';
 import MESSAGES from '../../config/alertMessages';
-import PATHS from '../../config/webPath';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import registerAction from '../../actions/registerAction';
 import CONFIG from '../../config/siteConfig';
-import  { Redirect } from 'react-router-dom'
-
-
 const RegisterComponent = () =>{
  const inputRef = useRef({});
  const dispatch = useDispatch();
@@ -46,7 +42,7 @@ const RegisterComponent = () =>{
   return(
 
     <form className={classes.form} onSubmit={handleSubmit}>
-      
+
       {log.status_code&&log.status_code===MESSAGES.WRONG_CREDENTIAL&&<div className={classes.error}>{MESSAGES[log.error]}</div>}
       <div className={classes.formGroup}>
         <label ref={el => inputRef.current['nameLable'] = el} className={classes.formLabel} {...(errors.first_name&&touched.first_name)?{error:"true"}:{}}>First Name*</label>
