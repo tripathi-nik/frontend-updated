@@ -1,6 +1,7 @@
 export const loginPerformer = {
   login: 'USER_LOGIN',
   logout: 'USER_LOGOUT',
+  loadProfile: 'LOAD_USER_PROFILE'
 };
 
 export const loaderTypes = {

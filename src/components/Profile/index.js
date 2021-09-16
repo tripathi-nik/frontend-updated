@@ -15,6 +15,7 @@ const ProfileComponent = () =>{
  const dispatch = useDispatch();
  const load = useSelector(state => state.loaderReducer);
  let log = useSelector(state => state.agentReducer);
+ console.log(log);
  return(
 
   <Formik initialValues={{first_name:log.first_name,last_name:log.last_name,local_address:log?log.local_address:'',city:log?log.city:'',state:log?log.state:'',zip:log?log.zip:''}} onSubmit={(values, {setSubmitting})=>{

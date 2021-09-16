@@ -1,17 +1,18 @@
 import {useMemo,useState} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
+import loginAction from '../actions/loginAction';
+
 const WebConfig = () =>{
+  const dispatch = useDispatch();
   const [user,setUser] = useState(null);
   let log = useSelector(state => state.agentReducer);
+  let userID = localStorage.getItem('usID');
   useMemo(()=>{
-    let userID = localStorage.getItem('usID');
     setUser(!log._id&&log.validate?log.validate:null);
-    //console.log(log)
   },[log]);
   if(user===true){
-    console.log("now hits the dispatch");
+    dispatch(loginAction.profile(userID));
     setUser(null);
   }
-  //return `user id of the site ${userID}`;
 }
 export default WebConfig;
