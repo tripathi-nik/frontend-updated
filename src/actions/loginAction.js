@@ -28,6 +28,7 @@ const loginAction = {
   },
   profile: (search) => (dispatch) =>{
     let value = localStorage.getItem('token');
+
     const requestOptions = {
         method: 'POST',
         headers: {

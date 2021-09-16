@@ -15,10 +15,10 @@ const ProfileComponent = () =>{
  const dispatch = useDispatch();
  const load = useSelector(state => state.loaderReducer);
  let log = useSelector(state => state.agentReducer);
- console.log(log);
+
  return(
 
-  <Formik initialValues={{first_name:log.first_name,last_name:log.last_name,local_address:log?log.local_address:'',city:log?log.city:'',state:log?log.state:'',zip:log?log.zip:''}} onSubmit={(values, {setSubmitting})=>{
+  <Formik initialValues={{first_name:log.first_name,last_name:log.last_name,local_address:log?log.local_address:'',city:log?log.city:'',state:log?log.state:'',zip:log?log.zip:''}} enableReinitialize onSubmit={(values, {setSubmitting})=>{
        //dispatch(registerAction.register(values));
        console.log(values);
 
@@ -47,7 +47,7 @@ const ProfileComponent = () =>{
          name="first_name"
          onChange={handleChange}
          onBlur={handleBlur}
-         value = {values.first_name}
+         value = {values.first_name||''}
          className={classes.formElement}
          placeholder="First Name*"
          {...(errors.first_name&&touched.first_name)?{error:"true"}:{}}
@@ -63,7 +63,7 @@ const ProfileComponent = () =>{
          onChange={handleChange}
          onBlur={handleBlur}
          className={classes.formElement}
-         value = {values.last_name}
+         value = {values.last_name||''}
          placeholder="Last Name*"
         />
       </div>
