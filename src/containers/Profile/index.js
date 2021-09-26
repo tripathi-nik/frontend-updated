@@ -1,6 +1,7 @@
 import classes from './profile.module.css';
 import CONFIG from '../../config/alertMessages';
 import ProfileComponent from '../../components/Profile';
+import MediaComponent from '../../components/MediaUpload';
 const Profile = (props) => {
 return (
   <div className={classes.middleSection}>
@@ -10,6 +11,9 @@ return (
          <ProfileComponent/>
        </div>
      </div>
+     <div className={[classes.grid, classes.rightGrid].join(' ')}>
+       <MediaComponent/>
+      </div>
   </div>
 );
 };

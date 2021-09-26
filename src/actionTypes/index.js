@@ -8,9 +8,13 @@ export const loginPerformer = {
 export const loaderTypes = {
   start: 'LOADING_START',
   stop: 'LOADING_STOP',
-  defaultVar: 'CHANGE_VAR_ON_VALID_URL'
 };
 
 export const userRegister = {
   register: 'USER_REGISTER'
+};
+
+export const loadToast = {
+  start: 'TOAST_START',
+  stop: 'TOAST_STOP',
 };
