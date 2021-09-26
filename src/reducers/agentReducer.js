@@ -18,10 +18,16 @@ const agentReducer = (state=data,action) =>{
         const userData = {...action.payload,...{validate:false}};
         return userData;
       }
+
+      case loginPerformer.loadProfile:{
+        const userData = {...action.payload.data?action.payload.data:action.payload,...{validate:localStorage.getItem('token')?true:false}};
+        return userData;
+      }
       case userRegister.register:{
         const data = {...action.payload};
         return data;
       }
+
       default:
       return state
    }

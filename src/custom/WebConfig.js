@@ -1,11 +1,18 @@
-import {useMemo} from 'react';
+import {useMemo,useState} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
+import loginAction from '../actions/loginAction';
+
 const WebConfig = () =>{
-  let userID = localStorage.getItem('usID');
+  const dispatch = useDispatch();
+  const [user,setUser] = useState(null);
   let log = useSelector(state => state.agentReducer);
-  const fetchRecord = useMemo(()=>{
-    alert("hello the change in state");
+  let userID = localStorage.getItem('usID');
+  useMemo(()=>{
+    setUser(!log._id&&log.validate?log.validate:null);
   },[log]);
-  return `user id of the site ${userID}`;
+  if(user===true){
+    dispatch(loginAction.profile(userID));
+    setUser(null);
+  }
 }
 export default WebConfig;
