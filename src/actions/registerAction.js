@@ -20,6 +20,9 @@ const registerAction = {
       .catch(error => {
         console.error('Error:', error);
       })
+  },
+  profileImage: (search) => (dispatch) =>{
+     dispatch({type:userRegister.profilePicture,payload:search});
   }
 };
 export default registerAction;

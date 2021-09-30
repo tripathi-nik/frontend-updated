@@ -2,7 +2,7 @@ export const loginPerformer = {
   login: 'USER_LOGIN',
   logout: 'USER_LOGOUT',
   loadProfile: 'LOAD_USER_PROFILE',
-  resetProfile: 'RESET_LOAD'
+  resetProfile: 'RESET_LOAD',
 };
 
 export const loaderTypes = {
@@ -11,7 +11,8 @@ export const loaderTypes = {
 };
 
 export const userRegister = {
-  register: 'USER_REGISTER'
+  register: 'USER_REGISTER',
+  profilePicture: 'PROFILE_PICTURE'
 };
 
 export const loadToast = {

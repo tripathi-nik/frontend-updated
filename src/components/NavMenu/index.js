@@ -28,7 +28,6 @@ const NavMenu = () =>{
     secitems.push(PATH[secURL[j]]);
   }
   WebConfig();
-  //console.log(conf);
   const openNav = () =>{
     console.log("open nav function hit.");
     setToggle('0px');
