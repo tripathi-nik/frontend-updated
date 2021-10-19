@@ -1,6 +1,7 @@
 import {loginPerformer,userRegister} from '../actionTypes';
 const data = {
   validate:localStorage.getItem('token')?true:false,
+  profileImage:null
 };
 const agentReducer = (state=data,action) =>{
    if(action.payload&&action.payload.token){
@@ -15,7 +16,7 @@ const agentReducer = (state=data,action) =>{
       case loginPerformer.logout:{
         localStorage.removeItem('token');
         localStorage.removeItem('usID');
-        const userData = {...action.payload,...{validate:false}};
+        const userData = {...{validate:false}};
         return userData;
       }
 
@@ -25,6 +26,14 @@ const agentReducer = (state=data,action) =>{
       }
       case userRegister.register:{
         const data = {...action.payload};
+        return data;
+      }
+      case userRegister.profilePicture:{
+        const data = {
+          ...state,
+          profile_picture:action.payload
+        };
+        console.log(data);
         return data;
       }
 

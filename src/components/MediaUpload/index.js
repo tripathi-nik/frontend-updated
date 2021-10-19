@@ -1,12 +1,18 @@
-import {useState} from 'react';
+import {useState,useMemo} from 'react';
+import { useSelector,useDispatch } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import CONFIG from '../../config/siteConfig';
+import registerAction from '../../actions/registerAction';
 
 const token = localStorage.getItem('token');
 const env = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'?'DEVELOPMENT':'PRODUCTION';
 const Media = () =>{
+
+  const dispatch = useDispatch();
   const [percent, setPercent] = useState(0);
+  let { profile_picture } = useSelector(state => state.agentReducer);
+
   const [imageUrl, setImageUrl] = useState(null);
 
   const onChange = files =>{
@@ -29,11 +35,15 @@ const Media = () =>{
     axios.post(CONFIG[env]['SERVERURL']+'api/agent/media-upload',data,option).then(res=>{
       const {data,status} = res;
       if(status===200){
-        console.log(data);
         setImageUrl(CONFIG[env]['IMAGEPATH']+data.path);
+        dispatch(registerAction.profileImage(data.path));
       }
      })
   }
+
+  useMemo(()=>{
+    setImageUrl(profile_picture?CONFIG[env]['IMAGEPATH']+profile_picture:null);
+  },[profile_picture])
   return(
     <Dropzone onDrop={onChange}>
        {({getRootProps, getInputProps}) => (
