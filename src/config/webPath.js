@@ -4,7 +4,8 @@ const PATHS = {
   LOGIN: '/admin/login',
   ACCOUNT: '/admin/account',
   PROFILE: '/admin/profile',
-  PRODUCT: '/admin/product'
+  PRODUCT: '/admin/product',
+  PRODUCTEDIT: '/admin/products/edit/:slug'
 };
 
 export default PATHS;

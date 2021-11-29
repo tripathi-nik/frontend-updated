@@ -19,3 +19,7 @@ export const loadToast = {
   start: 'TOAST_START',
   stop: 'TOAST_STOP',
 };
+
+export const listProducts = {
+  list: 'PRODUCT_LIST'
+};
