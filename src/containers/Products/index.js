@@ -1,6 +1,10 @@
 import classes from './productContainer.module.css';
-import {useState,useMemo} from "react";
+import { useSelector,useDispatch } from 'react-redux';
+import {useState,useMemo,useEffect} from "react";
+import productAction from '../../actions/productAction';
 import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy } from 'react-table'
+import {Link} from 'react-router-dom';
+import Moment from 'moment';
 
 function GlobalFilter({
     preGlobalFilteredRows,
@@ -53,7 +57,7 @@ function Table({ columns, data }) {
         {
             columns,
             data,
-            initialState: { pageIndex: 0, pageSize: 5 },
+            initialState: { pageIndex: 0, pageSize: 10 },
         },
 
         useFilters,
@@ -149,85 +153,62 @@ function Table({ columns, data }) {
 }
 
 function PaginationTableComponent() {
+  const dispatch = useDispatch();
+   useEffect(()=>{
+     dispatch(productAction.products('products'));
+   },[PaginationTableComponent]);
+    const products = useSelector(state => state.productReducer);
+    if(products){
+      products.products.map((key,value)=>{
+        const dataSet = [];
+        dataSet.push(<Link to={"/admin/products/edit/"+products.products[value].slug+"/"}>Edit</Link>);
+        //dataSet.push( <i className="fa fa-trash fa-x btn btn-danger btn-filled"></i>);
+        //dataSet.push( <i className="fa  fa-history fa-x btn btn-warning btn-filled"></i>);
+        products.products[value].edit=dataSet;
+        products.products[value].added_on = Moment(products.products[value].added_on).format('DD MMM,YYYY');
+        products.products[value].key=key;
+      });
+    }
+     const data =products;
+     console.log(data);
     const columns = useMemo(
         () => [
 
             {
-                Header: 'Info',
+                Header: 'Products',
                 columns: [
                   {
-                      Header: 'First Name',
-                      accessor: 'firstName',
+                      Header: 'Title',
+                      accessor: 'title',
                   },
                   {
-                      Header: 'Last Name',
-                      accessor: 'lastName',
+                      Header: 'Cost Price',
+                      accessor: 'cost_price',
                   },
                     {
-                        Header: 'Age',
-                        accessor: 'age',
+                        Header: 'Sale Price',
+                        accessor: 'sale_price',
                     },
                     {
-                        Header: 'Visits',
-                        accessor: 'visits',
+                        Header: 'Inventory',
+                        accessor: 'inventory',
                     },
                     {
-                        Header: 'Status',
-                        accessor: 'status',
+                        Header: 'Added On',
+                        accessor: 'added_on',
                     },
                     {
-                        Header: 'Profile Progress',
-                        accessor: 'progress',
+                        Header: 'Edit',
+                        accessor: 'edit',
                     },
                 ],
             },
         ],
         []
     )
-
-    const data = [
-        {
-            "firstName": "committee-c15dw",
-            "lastName": "editor-ktsjo",
-            "age": 3,
-            "visits": 46,
-            "progress": 75,
-            "status": "relationship"
-        },
-        {
-            "firstName": "midnight-wad0y",
-            "lastName": "data-7h4xf",
-            "age": 1,
-            "visits": 56,
-            "progress": 15,
-            "status": "complicated"
-        },
-        {
-            "firstName": "tree-sbdb0",
-            "lastName": "friendship-w8535",
-            "age": 1,
-            "visits": 45,
-            "progress": 66,
-            "status": "single"
-        },
-        {
-            "firstName": "chin-borr8",
-            "lastName": "shirt-zox8m",
-            "age": 0,
-            "visits": 25,
-            "progress": 67,
-            "status": "complicated"
-        },
-        {
-            "firstName": "women-83ef0",
-            "lastName": "chalk-e8xbk",
-            "age": 9,
-            "visits": 28,
-            "progress": 23,
-            "status": "relationship"
-        }]
     return (
-        <Table columns={columns} data={data} />
+      <Table columns={columns} data={data.products} />
+
     )
 }
 

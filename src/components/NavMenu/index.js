@@ -43,6 +43,7 @@ const NavMenu = () =>{
     console.log("be ready for call back");
   };
   const pathname = location.pathname;
+  console.log(pathname);
   useMemo(()=>{
     console.log("blast furnance");
     if(token!==null){
@@ -51,12 +52,12 @@ const NavMenu = () =>{
       setRedirect('two');
     }
   },[token]);
-  if(!secitems.includes(pathname)&&redirect==='one'){
-    history.push(PATH.PROFILE);
-  }
-  if(secitems.includes(pathname)&&redirect==='two'){
-    history.push(PATH.LOGIN);
-  }
+  // if(!secitems.includes(pathname)&&redirect==='one'){
+  //   history.push(PATH.PROFILE);
+  // }
+  // if(secitems.includes(pathname)&&redirect==='two'){
+  //   history.push(PATH.LOGIN);
+  // }
 
   return(
     <>
